@@ -1,5 +1,14 @@
 ﻿@model ShoppingCartVM
-
+@if(Model.ShoppingCartsList.Count() < 1)
+{
+	<div class="alert alert-danger text-center p-4 mt-5">
+		<p class="">No items in your cart 
+		<a asp-controller="Home" asp-action="Index">Add To cart</a>
+		</p>
+	</div>
+}
+else
+{
 <form method="post">
 	<br />
 	<div class="container">
@@ -19,12 +28,6 @@
 			<div class="card-body">
 				@foreach (var item in Model.ShoppingCartsList)
 				{
-					if(Model. > 1)
-					{
-						<p class="text-danger">No items to display</p>
-					}
-					else
-					{
 						<div class="row">
 							<div class="d-none d-lg-block col-lg-1 text-center py-2">
 								<img src="@item.Product.ImageUrl" class="rounded" width="100%" />
@@ -61,7 +64,6 @@
 							</div>
 						</div>
 						<hr />
-					}
 				}
 				<div class="row">
 					<div class="col-12 col-md-6 offset-md-6 col-lg-4 offset-lg-8 pr-4">
@@ -86,3 +88,4 @@
 		</div>
 	</div>
 </form>
+}
